@@ -1,4 +1,4 @@
-# dd-csv-cat
+# dd-log-cat
 
 Extracts the `Message` attribute for Datadog log exports (CSV).
 
