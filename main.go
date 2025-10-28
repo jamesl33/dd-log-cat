@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/csv"
+	"encoding/json"
 	"errors"
 	"fmt"
 	"io"
@@ -66,6 +67,11 @@ func dump(r io.Reader) error {
 
 		if err != nil {
 			return fmt.Errorf("failed to read line: %w", err)
+		}
+
+		// Ignore log lines which aren't JSON formatted
+		if !json.Valid([]byte(line[idx])) {
+			continue
 		}
 
 		fmt.Println(line[idx])
